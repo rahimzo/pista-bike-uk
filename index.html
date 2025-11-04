@@ -5,736 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pista Bikes UK | London Bike Shop & Workshop</title>
     <meta name="description" content="Pista Bikes UK – premium local bike shop in London offering city bikes, commuter bikes, expert servicing and friendly advice.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-blue: #1a3a52;
-            --secondary-blue: #2c5f7c;
-            --accent-color: #ff6b35;
-            --light-grey: #f5f5f5;
-            --dark-grey: #333;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-grey);
-        }
-
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-grey);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-color);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-blue);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        .hero {
-            height: 600px;
-            background: linear-gradient(rgba(26, 58, 82, 0.7), rgba(26, 58, 82, 0.7)), 
-                        url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=1600') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent-color);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: #e85a2a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary-blue);
-            transform: translateY(-2px);
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--secondary-blue);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-text {
-            color: var(--dark-grey);
-            margin-bottom: 1rem;
-        }
-
-        .featured-bike {
-            background: var(--light-grey);
-            padding: 3rem 2rem;
-            border-radius: 10px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .featured-bike img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .specs {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .specs li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .footer-callout {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-callout h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background: var(--dark-grey);
-            color: var(--white);
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin: 0.5rem 0;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--secondary-blue);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #555;
-            color: #888;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 2rem 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin: 2rem 0;
-        }
-
-        .about-image {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .testimonials {
-            background: var(--light-grey);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .testimonial {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin-top: 0.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .service-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .service-item {
-            background: var(--light-grey);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .service-item h4 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .price-tag {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .featured-bike,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Pista Bikes UK",
+        "description": "Premium local bike shop in London offering city bikes, commuter bikes, expert servicing and friendly advice",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "London",
+            "addressLocality": "London",
+            "addressCountry": "GB"
+        },
+        "telephone": "020-XXXX-XXXX",
+        "email": "info@pistabikes.co.uk",
+        "openingHours": [
+            "Mo-Fr 09:00-18:00",
+            "Sa 10:00-17:00"
+        ],
+        "priceRange": "££"
+    }
+    </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Pista Bikes UK</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#bikes">Bikes & Products</a></li>
-                <li><a href="#service">Service & Workshop</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+    <div id="navbar-container"></div>
 
-    <!-- HOME PAGE -->
-    <section id="home">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Welcome to Pista Bikes UK – Your London Cycling Headquarters</h1>
-                <p>Located in London, our shop offers city bikes, commuter bikes, full service and expert advice. Visit us to find your perfect ride.</p>
-                <div class="cta-buttons">
-                    <a href="#bikes" class="btn btn-primary">Browse Bikes</a>
-                    <a href="#service" class="btn btn-secondary">Book Service</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Featured Categories</h2>
-            <p class="section-subtitle">Discover our curated selection of bikes perfect for London cycling</p>
-            
-            <div class="grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800" alt="City Bikes" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">City Bikes</h3>
-                        <p class="card-text">Perfect for urban commuting with comfort and style. Designed for navigating London's streets with ease.</p>
-                        <a href="#bikes" class="btn btn-primary">View More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800" alt="Commuter Bikes" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Commuter Bikes</h3>
-                        <p class="card-text">Reliable, efficient bikes built for daily commutes. Lightweight and durable for year-round cycling.</p>
-                        <a href="#bikes" class="btn btn-primary">View More</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=800" alt="Accessories" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Accessories</h3>
-                        <p class="card-text">Everything you need for safe, comfortable cycling. From locks to lights, helmets to panniers.</p>
-                        <a href="#bikes" class="btn btn-primary">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="featured-bike">
-                <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800" alt="Featured Bike">
-                <div>
-                    <h3 class="card-title">Featured: Urban Commuter Pro</h3>
-                    <p>Our most popular city bike, perfect for London commuters</p>
-                    <ul class="specs">
-                        <li><strong>Frame:</strong> Lightweight aluminum alloy</li>
-                        <li><strong>Gears:</strong> 8-speed Shimano drivetrain</li>
-                        <li><strong>Brakes:</strong> Hydraulic disc brakes</li>
-                        <li><strong>Features:</strong> Integrated lights, rack mounts</li>
-                    </ul>
-                    <p class="price-tag">Contact for price</p>
-                    <a href="#contact" class="btn btn-primary">Enquire Now</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-callout">
-            <h3>Shop located in London – Visit us today!</h3>
-            <p>Come see our full range of bikes and accessories in person</p>
-            <a href="#contact" class="btn btn-primary">Get Directions</a>
-        </div>
-    </section>
-
-    <!-- ABOUT US PAGE -->
-    <section id="about" class="section hidden">
-        <h2 class="section-title">About Pista Bikes UK</h2>
-        <p class="section-subtitle">Your trusted local bike shop since day one</p>
-
-        <div class="about-grid">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Our Shop Interior" class="about-image">
-            <div>
-                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Our Story</h3>
-                <p style="margin-bottom: 1rem;">At Pista Bikes UK, we're passionate about getting London cycling. Our expert team has decades of combined experience in bicycle sales, maintenance, and custom builds.</p>
-                <p style="margin-bottom: 1rem;">We pride ourselves on offering a curated selection of bikes perfect for city living, backed by comprehensive workshop services. Whether you're a seasoned cyclist or just starting out, we're here to help you find the perfect ride.</p>
-                <p>Our mission is simple: provide quality bikes, expert advice, and reliable service to keep London's cyclists rolling.</p>
-            </div>
-        </div>
-
-        <div style="margin-top: 3rem;">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem; text-align: center;">Visit Our Shop</h3>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.891234567890!2d-0.1234567!3d51.5234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDMxJzI0LjQiTiAwwrAwNyc0Ny40Ilc!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-
-        <div class="grid" style="margin-top: 3rem;">
-            <div class="card">
-                <div class="card-content">
-                    <h3 class="card-title">Opening Hours</h3>
-                    <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
-                    <p><strong>Saturday:</strong> 10:00 AM - 5:00 PM</p>
-                    <p><strong>Sunday:</strong> Closed</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-                    <h3 class="card-title">Contact Details</h3>
-                    <p><strong>Phone:</strong> 020 XXXX XXXX</p>
-                    <p><strong>Email:</strong> info@pistabikes.co.uk</p>
-                    <p><strong>Address:</strong> London, UK</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="testimonials">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem; text-align: center;">What Our Customers Say</h3>
-            <div class="testimonial">
-                <p>"Brilliant service! The team helped me find the perfect commuter bike and the workshop turnaround was incredibly fast. Highly recommended!"</p>
-                <p class="testimonial-author">- Sarah M., London</p>
-            </div>
-            <div class="testimonial">
-                <p>"I've been bringing my bikes here for years. The mechanics are knowledgeable, prices are fair, and they always have time to answer questions."</p>
-                <p class="testimonial-author">- James R., Hackney</p>
-            </div>
-            <div class="testimonial">
-                <p>"Great selection of city bikes and accessories. The staff really know their stuff and helped me choose exactly what I needed for cycling in London."</p>
-                <p class="testimonial-author">- Emma T., Islington</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Pista Bikes UK – Your London Cycling Headquarters</h1>
+            <p>Located in London, our shop offers city bikes, commuter bikes, full service and expert advice. Visit us to find your perfect ride.</p>
+            <div class="cta-buttons">
+                <a href="bikes.html" class="btn btn-primary">Browse Bikes</a>
+                <a href="services.html" class="btn btn-secondary">Book Service</a>
             </div>
         </div>
     </section>
 
-    <!-- BIKES & PRODUCTS PAGE -->
-    <section id="bikes" class="section hidden">
-        <h2 class="section-title">Bikes & Products</h2>
-        <p class="section-subtitle">Explore our carefully curated collection</p>
-
+    <div class="section">
+        <h2 class="section-title">Featured Categories</h2>
+        <p class="section-subtitle">Discover our curated selection of bikes perfect for London cycling</p>
+        
         <div class="grid">
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800" alt="City Bikes" class="card-image">
                 <div class="card-content">
                     <h3 class="card-title">City Bikes</h3>
-                    <p class="card-text">Comfortable, stylish bikes perfect for urban riding. Features upright geometry, puncture-resistant tires, and integrated lights for safe city navigation.</p>
-                    <a href="#contact" class="btn btn-primary">View More</a>
+                    <p class="card-text">Perfect for urban commuting with comfort and style. Designed for navigating London's streets with ease.</p>
+                    <a href="bikes.html" class="btn btn-primary">View More</a>
                 </div>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800" alt="Commuter Bikes" class="card-image">
                 <div class="card-content">
                     <h3 class="card-title">Commuter Bikes</h3>
-                    <p class="card-text">Lightweight, efficient bikes built for daily commuting. With reliable gearing, disc brakes, and mudguards, these bikes handle any weather condition.</p>
-                    <a href="#contact" class="btn btn-primary">View More</a>
+                    <p class="card-text">Reliable, efficient bikes built for daily commutes. Lightweight and durable for year-round cycling.</p>
+                    <a href="bikes.html" class="btn btn-primary">View More</a>
                 </div>
             </div>
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800" alt="Fixed Gear Bikes" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Fixed Gear & Single Speed</h3>
-                    <p class="card-text">Minimalist bikes for urban riders. Simple, low-maintenance design with clean aesthetics perfect for city streets and track enthusiasts.</p>
-                    <a href="#contact" class="btn btn-primary">View More</a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=800" alt="Helmets" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Helmets</h3>
-                    <p class="card-text">Safety first with our range of certified helmets. From sleek commuter styles to ventilated sport designs, find the perfect fit for your riding style.</p>
-                    <a href="#contact" class="btn btn-primary">Shop Now</a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Locks & Security" class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title">Locks & Security</h3>
-                    <p class="card-text">Keep your bike safe with high-quality D-locks, chain locks, and GPS trackers. We stock only the most secure options for London cyclists.</p>
-                    <a href="#contact" class="btn btn-primary">Shop Now</a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800" alt="Accessories" class="card-image">
+                <img src="https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?w=800" alt="Accessories" class="card-image">
                 <div class="card-content">
                     <h3 class="card-title">Accessories</h3>
-                    <p class="card-text">Lights, pumps, bags, bottles, and more. Everything you need to enhance your cycling experience and stay prepared on every ride.</p>
-                    <a href="#contact" class="btn btn-primary">Shop Now</a>
+                    <p class="card-text">Everything you need for safe, comfortable cycling. From locks to lights, helmets to panniers.</p>
+                    <a href="bikes.html" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
         </div>
 
-        <div class="featured-bike" style="margin-top: 3rem;">
-            <img src="https://images.unsplash.com/photo-1511994714008-b6c4b2e5d3a6?w=800" alt="Premium Commuter">
+        <div class="featured-bike">
+            <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800" alt="Featured Bike">
             <div>
-                <h3 class="card-title">Featured: Premium Commuter Elite</h3>
-                <p>Our flagship commuter bike with premium components</p>
+                <h3 class="card-title">Featured: Urban Commuter Pro</h3>
+                <p>Our most popular city bike, perfect for London commuters</p>
                 <ul class="specs">
-                    <li><strong>Frame:</strong> Carbon fiber composite</li>
-                    <li><strong>Gears:</strong> 11-speed Shimano 105</li>
+                    <li><strong>Frame:</strong> Lightweight aluminum alloy</li>
+                    <li><strong>Gears:</strong> 8-speed Shimano drivetrain</li>
                     <li><strong>Brakes:</strong> Hydraulic disc brakes</li>
-                    <li><strong>Wheels:</strong> 700c tubeless-ready</li>
-                    <li><strong>Weight:</strong> 10.5 kg</li>
-                    <li><strong>Features:</strong> Integrated lights, GPS mount, carbon fork</li>
+                    <li><strong>Features:</strong> Integrated lights, rack mounts</li>
                 </ul>
-                <p class="price-tag">£1,499</p>
-                <a href="#contact" class="btn btn-primary">Enquire Now</a>
+                <p class="price-tag">Contact for price</p>
+                <a href="contact.html" class="btn btn-primary">Enquire Now</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- SERVICE & WORKSHOP PAGE -->
-    <section id="service" class="section hidden">
-        <h2 class="section-title">Service & Workshop</h2>
-        <p class="section-subtitle">Expert mechanics, comprehensive servicing</p>
+    <div class="footer-callout">
+        <h3>Shop located in London – Visit us today!</h3>
+        <p>Come see our full range of bikes and accessories in person</p>
+        <a href="contact.html" class="btn btn-primary">Get Directions</a>
+    </div>
 
-        <div class="about-grid">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Our Workshop" class="about-image">
-            <div>
-                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Professional Bicycle Servicing</h3>
-                <p style="margin-bottom: 1rem;">Our experienced mechanics provide comprehensive servicing for all types of bicycles. From routine maintenance to complex repairs, we have the expertise and equipment to keep your bike running smoothly.</p>
-                <p style="margin-bottom: 1rem;">We use quality parts and lubricants, and all work is guaranteed. Most services can be completed within 24-48 hours, with same-day service available for urgent repairs.</p>
-            </div>
-        </div>
+    <div id="footer-container"></div>
 
-        <h3 style="color: var(--primary-blue); margin: 3rem 0 1.5rem; text-align: center;">Our Services</h3>
-        <div class="service-list">
-            <div class="service-item">
-                <h4>Basic Service</h4>
-                <p>Essential maintenance including brake adjustment, gear tuning, and safety check.</p>
-                <p class="price-tag">From £45</p>
-            </div>
-            <div class="service-item">
-                <h4>Full Service</h4>
-                <p>Comprehensive service with full drivetrain clean, brake service, wheel true, and safety inspection.</p>
-                <p class="price-tag">From £85</p>
-            </div>
-            <div class="service-item">
-                <h4>Premium Service</h4>
-                <p>Complete overhaul with bearing service, cable replacement, and detailed component inspection.</p>
-                <p class="price-tag">From £150</p>
-            </div>
-            <div class="service-item">
-                <h4>Wheel Truing</h4>
-                <p>Professional wheel alignment and spoke tension adjustment for smooth rolling.</p>
-                <p class="price-tag">From £20</p>
-            </div>
-            <div class="service-item">
-                <h4>Brake Service</h4>
-                <p>Complete brake system service including pad replacement, cable adjustment, and rotor alignment.</p>
-                <p class="price-tag">From £25</p>
-            </div>
-            <div class="service-item">
-                <h4>Puncture Repair</h4>
-                <p>Quick puncture repair while you wait. Tube replacement available if needed.</p>
-                <p class="price-tag">From £12</p>
-            </div>
-        </div>
-
-        <div style="background: var(--light-grey); padding: 3rem 2rem; border-radius: 10px; margin-top: 3rem;">
-            <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem; text-align: center;">Book Your Service</h3>
-            <form style="max-width: 600px; margin: 0 auto;">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" required>
-                
+    <script src="navbar.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>
