@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="nav-container">
         <a href="index.html" class="logo hover-grow">Caffè Necto</a>
         <ul class="nav-links">
-          <li><a href="index.html" class="transition-all">Home</a></li>
-          <li><a href="menu.html" class="transition-all">Menu</a></li>
-          <li><a href="gallery.html" class="transition-all">Gallery</a></li>
-          <li><a href="about.html" class="transition-all">About</a></li>
-          <li><a href="contact.html" class="transition-all">Contact</a></li>
+          <li><a href="https://rahimzo.github.io/pista-bike-uk/index.html" class="transition-all">Home</a></li>
+          <li><a href="https://rahimzo.github.io/pista-bike-uk/menu.html" class="transition-all">Menu</a></li>
+          <li><a href="https://rahimzo.github.io/pista-bike-uk/gallery.html" class="transition-all">Gallery</a></li>
+          <li><a href="https://rahimzo.github.io/pista-bike-uk/about.html" class="transition-all">About</a></li>
+          <li><a href="https://rahimzo.github.io/pista-bike-uk/contact.html" class="transition-all">Contact</a></li>
         </ul>
         <div class="menu-toggle" id="mobile-menu">
           <span class="bar"></span>
