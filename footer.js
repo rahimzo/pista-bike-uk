@@ -5,7 +5,7 @@ class CustomFooter extends HTMLElement {
       <style>
         footer {
           background-color: black;
-          color: white;
+          color: cream;
           padding: 3rem 2rem;
         }
         .footer-content {
@@ -29,7 +29,7 @@ class CustomFooter extends HTMLElement {
           left: 0;
           width: 40px;
           height: 1px;
-          background-color: white;
+          background-color: yellow;
         }
         .footer-section p, .footer-section a {
           color: #aaa;
@@ -38,7 +38,7 @@ class CustomFooter extends HTMLElement {
           display: block;
         }
         .footer-section a:hover {
-          color: white;
+          color: yellow;
         }
         .social-links {
           display: flex;
@@ -46,7 +46,7 @@ class CustomFooter extends HTMLElement {
           margin-top: 1rem;
         }
         .social-links a {
-          color: white;
+          color: yellow;
           width: 36px;
           height: 36px;
           border-radius: 50%;
